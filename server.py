@@ -131,9 +131,9 @@ def share_sheet(sheet_id, email_address, role='reader'):
 scheduler = BackgroundScheduler(daemon=True)
 
 # Define cron interval here
-# We will trigger the cron every 5 seconds
+# We will trigger the cron every 5 minutes
 trigger = CronTrigger(
-    year="*", month="*", day="*", hour="*", minute="*", second="*/5"
+    year="*", month="*", day="*", hour="*", minute="*/5"
 )
 
 scheduler.add_job(
