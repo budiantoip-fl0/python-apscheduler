@@ -1,5 +1,19 @@
 import os
-from flask import Flask, send_from_directory, render_template, redirect
+from flask import Flask, render_template
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
+
+scheduler = BackgroundScheduler(daemon=True)
+
+def prompt():
+    print("Executing Task...")
+
+scheduler.add_job(
+    prompt,
+    CronTrigger(hour='*', minute='*', second='*'),
+    timezone='Australia/Perth'
+)
+scheduler.start()  
 
 app = Flask(__name__)
 
